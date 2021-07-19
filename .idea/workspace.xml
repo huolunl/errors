@@ -37,9 +37,13 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="2215" y="436" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1626680235606">
+    <state x="2203" y="461" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1626681289977">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
-    <state x="2215" y="436" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1626680235606" />
+    <state x="2203" y="461" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1626681289977" />
+    <state x="2215" y="436" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1626681279171">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2215" y="436" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1626681279171" />
   </component>
 </project>

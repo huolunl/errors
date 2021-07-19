@@ -1,4 +1,4 @@
-module github.com/marmotedu/errors
+module git.cai-inc.com/support/errors
 
 go 1.16
 
