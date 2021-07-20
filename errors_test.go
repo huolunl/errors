@@ -6,6 +6,7 @@ import (
 	"io"
 	"reflect"
 	"testing"
+	code "github.com/marmotedu/sample-code"
 )
 
 func TestNew(t *testing.T) {
@@ -21,6 +22,7 @@ func TestNew(t *testing.T) {
 
 	for _, tt := range tests {
 		got := New(tt.err)
+		fmt.Println(got)
 		if got.Error() != tt.want.Error() {
 			t.Errorf("New.Error(): got: %q, want %q", got, tt.want)
 		}
@@ -46,6 +48,7 @@ func TestWrap(t *testing.T) {
 
 	for _, tt := range tests {
 		got := Wrap(tt.err, tt.message).Error()
+		fmt.Println(got)
 		if got != tt.want {
 			t.Errorf("Wrap(%v, %q): got: %v, want %v", tt.err, tt.message, got, tt.want)
 		}
@@ -332,5 +335,18 @@ func TestParseCoder(t *testing.T) {
 			t.Errorf("TestCodeParse(%d): got %q, want: %q", i, coder.Reference(), tt.wantReference)
 		}
 	}
+
+}
+
+func TestWithCode2(t *testing.T) {
+	err := WithCode(code.ErrDecodingJSON,"abc")
+	coder := ParseCoder(err)
+	fmt.Println(coder.String())
+	fmt.Println(coder.Code())
+	fmt.Println(coder.HTTPStatus())
+	fmt.Println(coder.Reference())
+
+	err = WithStack(err)
+
 
 }
