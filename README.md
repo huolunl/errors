@@ -4,15 +4,22 @@
 
 
 ```go
-// 注册
+// 包内注册公共的code码
 // 1 /code 目录下添加你的code码
 // 2 code.go 文件里init()方法注册你的code码
 // 3 新版本发布，其他应用import对应版本的包，即可使用
 
+// 使用者注册应用特有的code码
+import (
+"git.cai-inc.com/support/errors"
+)
+func TestRegister(t *testing.T) {
+    errors.Register(100001,500,"abc")
+}
 // 使用
 func TestWithCode(t *testing.T) {
-	err := WithCode(code.ErrDecodingJSON,"abc")
-	coder := ParseCoder(err)
+	err := errors.WithCode(errors.code.ErrDecodingJSON,"abc")
+	coder := errors.ParseCoder(err)
 	fmt.Println(coder.String())
 	fmt.Println(coder.Code())
 	fmt.Println(coder.HTTPStatus())

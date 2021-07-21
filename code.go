@@ -27,15 +27,13 @@ type Coder interface {
 	Code() int
 }
 
-
 // codes contains a map of error codes to metadata.
 var codes = map[int]Coder{}
 var codeMux = &sync.Mutex{}
 
-
-// MustRegister register a user define error code.
+// mustRegister register a user define error code.
 // It will panic when the same Code already exist.
-func MustRegister(coder Coder) {
+func mustRegister(coder Coder) {
 	if coder.Code() == 0 {
 		panic("code '0' is reserved by 'github.com/marmotedu/errors' as ErrUnknown error code")
 	}
@@ -83,7 +81,6 @@ func IsCode(err error, code int) bool {
 
 	return false
 }
-
 
 // ErrCode implements `git.cai-inc.com/support/errors`.Coder interface.
 type ErrCode struct {
@@ -171,5 +168,9 @@ func register(code int, httpStatus int, message string, refs ...string) {
 		Ref:  reference,
 	}
 
-	MustRegister(coder)
+	mustRegister(coder)
+}
+
+func Register(code int, httpStatus int, message string, refs ...string) {
+	register(code, httpStatus, message, refs...)
 }
