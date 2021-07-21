@@ -19,6 +19,4 @@ func TestWithCode(t *testing.T) {
 	fmt.Println(fmt.Sprintf("%+v",err))
 	fmt.Println(fmt.Sprintf("%#v",err))
 	fmt.Println(fmt.Sprintf("%#+v",err))
-
-
 }
