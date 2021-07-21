@@ -2,7 +2,6 @@
 
 性能跟 `github.com/pkg/errors` 基本持平。
 
-该 errors 包匹配的错误码设计请参考：(https://git.cai-inc.com/support/errors/code)
 
 ```go
 // 注册
