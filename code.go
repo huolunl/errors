@@ -27,63 +27,11 @@ type Coder interface {
 	Code() int
 }
 
-type defaultCoder struct {
-	// C refers to the integer code of the ErrCode.
-	C int
-
-	// HTTP status that should be used for the associated error code.
-	HTTP int
-
-	// External (user) facing error text.
-	Ext string
-
-	// Ref specify the reference document.
-	Ref string
-}
-
-// Code returns the integer code of the coder.
-func (coder defaultCoder) Code() int {
-	return coder.C
-
-}
-
-// String implements stringer. String returns the external error message,
-// if any.
-func (coder defaultCoder) String() string {
-	return coder.Ext
-}
-
-// HTTPStatus returns the associated HTTP status code, if any. Otherwise,
-// returns 200.
-func (coder defaultCoder) HTTPStatus() int {
-	if coder.HTTP == 0 {
-		return 500
-	}
-
-	return coder.HTTP
-}
-
-// Reference returns the reference document.
-func (coder defaultCoder) Reference() string {
-	return coder.Ref
-}
 
 // codes contains a map of error codes to metadata.
 var codes = map[int]Coder{}
 var codeMux = &sync.Mutex{}
 
-// Register register a user define error code.
-// It will overrid the exist code.
-func Register(coder Coder) {
-	if coder.Code() == 0 {
-		panic("code `0` is reserved by `git.cai-inc.com/support/errors/code` as unknownCode error code")
-	}
-
-	codeMux.Lock()
-	defer codeMux.Unlock()
-
-	codes[coder.Code()] = coder
-}
 
 // MustRegister register a user define error code.
 // It will panic when the same Code already exist.
@@ -204,7 +152,6 @@ func init() {
 	register(code.ErrInvalidYaml, 500, "Data is not valid Yaml")
 	register(code.ErrEncodingYaml, 500, "Yaml data could not be encoded")
 	register(code.ErrDecodingYaml, 500, "Yaml data could not be decoded")
-	register(code.ErrTest, 500, "Test error")
 }
 func register(code int, httpStatus int, message string, refs ...string) {
 	found, _ := gubrak.Includes([]int{200, 400, 401, 403, 404, 500}, httpStatus)

@@ -12,4 +12,13 @@ func TestWithCode(t *testing.T) {
 	fmt.Println(coder.String())
 	fmt.Println(coder.Code())
 	fmt.Println(coder.HTTPStatus())
+	fmt.Println(coder.Reference())
+
+	fmt.Println("---------------")
+	// (# json), (+ detail),()
+	fmt.Println(fmt.Sprintf("%+v",err))
+	fmt.Println(fmt.Sprintf("%#v",err))
+	fmt.Println(fmt.Sprintf("%#+v",err))
+
+
 }
