@@ -10,7 +10,6 @@ import (
 	"io"
 )
 
-
 // Errorf formats according to a format specifier and returns the string
 // as a value that satisfies error.
 // Errorf also records the stack trace at the point it was called.
@@ -44,8 +43,6 @@ func (f *fundamental) Format(s fmt.State, verb rune) {
 		fmt.Fprintf(s, "%q", f.msg)
 	}
 }
-
-
 
 // Wrap returns an error annotating err with a stack trace
 // at the point Wrap is called, and the supplied message.
