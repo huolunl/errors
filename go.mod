@@ -1,4 +1,4 @@
-module git.cai-inc.com/support/errors
+module github.com/huolunl/errors
 
 go 1.16
 

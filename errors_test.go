@@ -2,7 +2,7 @@ package errors
 
 import (
 	"fmt"
-	"git.cai-inc.com/support/errors/code"
+	"github.com/huolunl/errors/code"
 	"testing"
 )
 
